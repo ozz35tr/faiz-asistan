@@ -1,5 +1,5 @@
 // Uygulama Ayarları
-export const APP_TITLE = 'FaizAsistan-Ver1.0';
+export const APP_TITLE = 'FaizAsistan-Ver1.0.1';
 
 // Ortam kontrolü: Localhost mu yoksa sunucu mu?
 const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
