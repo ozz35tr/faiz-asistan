@@ -1,19 +1,17 @@
 // Uygulama Ayarları
-export const APP_TITLE = 'FaizAsistan-Ver1.0.1';
+export const APP_TITLE = 'FaizAsistan-Ver1.0.2';
 
 // Ortam kontrolü: Localhost mu yoksa sunucu mu?
 const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
-// API Endpoint
-export const API_ENDPOINT = isLocal 
-  ? 'http://localhost/save.php' 
-  : './save.php'; 
+// API Endpoint (Vercel Serverless & API)
+export const API_ENDPOINT = '/api/save'; 
 
 // Varsayılan Finansal Değerler
 export const DEFAULT_ANAPARA = 100000;
-export const DEFAULT_FAIZ = 45;
+export const DEFAULT_FAIZ = 33.5;
 export const DEFAULT_VADE = 32;
-export const DEFAULT_STOPAJ = 5;
+export const DEFAULT_STOPAJ = 17.5;
 
 // Grafik Renkleri
 export const COLORS = {
