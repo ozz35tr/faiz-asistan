@@ -43,10 +43,11 @@ const CalculatorForm: React.FC<CalculatorFormProps> = ({ data, onChange }) => {
             </label>
             <input
               type="number"
+              step="any"
               value={data.yillikFaiz || ''}
               onChange={(e) => handleChange(e, 'yillikFaiz')}
               className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none font-medium text-slate-900"
-              placeholder="45"
+              placeholder="33.5"
             />
           </div>
 
@@ -72,10 +73,11 @@ const CalculatorForm: React.FC<CalculatorFormProps> = ({ data, onChange }) => {
             </label>
             <input
               type="number"
-              value={data.stopaj}
+              step="any"
+              value={data.stopaj !== undefined ? data.stopaj : ''}
               onChange={(e) => handleChange(e, 'stopaj')}
               className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all outline-none font-medium text-slate-900"
-              placeholder="5"
+              placeholder="17.5"
             />
         </div>
       </div>
