@@ -5,8 +5,9 @@ import { saveCalculation } from './services/apiService';
 import CalculatorForm from './components/CalculatorForm';
 import ResultCard from './components/ResultCard';
 import Visualization from './components/Visualization';
-import AIAdvisor from './components/AIAdvisor';
 import RecentCalculations from './components/RecentCalculations';
+import { PWAInstallButton } from './components/PWAInstallButton';
+import { OfflineIndicator } from './components/OfflineIndicator';
 import { Coins } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -107,7 +108,7 @@ const App: React.FC = () => {
       console.warn("Sunucu kaydı:", e);
     }
 
-    // 3. Başarılı durumuna geçir
+    // 3. Başarılı durumuna geçir (2.5 saniye sonra ilk haline döner)
     setSaveState(LoadingState.SUCCESS);
     setTimeout(() => {
       setSaveState(LoadingState.IDLE);
@@ -125,6 +126,7 @@ const App: React.FC = () => {
             </div>
             <h1 className="text-xl font-bold text-slate-800 tracking-tight">{APP_TITLE}</h1>
           </div>
+          <PWAInstallButton />
         </div>
       </header>
 
@@ -132,10 +134,9 @@ const App: React.FC = () => {
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
-          {/* Left Column: Inputs and AI (8 cols) */}
+          {/* Left Column: Inputs and Recent Calculations (8 cols) */}
           <div className="lg:col-span-8 space-y-6">
             <CalculatorForm data={data} onChange={handleDataChange} />
-            <AIAdvisor data={data} result={result} />
             <RecentCalculations 
               history={history} 
               onSelect={handleHistorySelect} 
@@ -155,6 +156,7 @@ const App: React.FC = () => {
           </div>
         </div>
       </main>
+      <OfflineIndicator />
     </div>
   );
 };

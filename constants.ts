@@ -1,11 +1,8 @@
 // Uygulama Ayarları
 export const APP_TITLE = 'FaizAsistan-Ver1.0.2';
 
-// Ortam kontrolü: Localhost mu yoksa sunucu mu?
-const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-
 // API Endpoint (Vercel Serverless & API)
-export const API_ENDPOINT = '/api/save'; 
+export const API_ENDPOINT = '/api/save';
 
 // Varsayılan Finansal Değerler
 export const DEFAULT_ANAPARA = 100000;

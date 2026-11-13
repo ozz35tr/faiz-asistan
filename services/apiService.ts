@@ -12,7 +12,11 @@ export const saveCalculation = async (
     netYillik: netGetiri
   };
 
-  const candidateEndpoints = ['/api/save', './save.php'];
+  // Vercel Serverless API veya PHP uç noktalarını dene
+  const candidateEndpoints = [
+    '/api/save',
+    './save.php'
+  ];
 
   for (const endpoint of candidateEndpoints) {
     try {
@@ -23,13 +27,20 @@ export const saveCalculation = async (
       });
 
       if (response.ok) {
-        return { success: true, message: 'Hesaplama sunucuya kaydedildi.' };
+        try {
+          const result: SaveResponse = await response.json();
+          return result;
+        } catch {
+          return { success: true, message: 'Hesaplama sunucuya kaydedildi.' };
+        }
       }
     } catch {
+      // Bir sonraki alternatifi dene
       continue;
     }
   }
 
+  // Sunucu uç noktası yanıt vermese bile yerel tarayıcı hafızasına (localStorage) başarıyla kaydedilmiştir.
   return {
     success: true,
     message: 'Hesaplama yerel geçmişinize başarıyla kaydedildi.'
